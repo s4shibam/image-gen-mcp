@@ -1,5 +1,5 @@
 import z from "zod"
-import { z_image_job } from "./index"
+import { z_absolute_output_directory, z_image_job } from "./index"
 
 const OPENAI_QUALITIES = ["low", "medium", "high", "auto", "standard", "hd"] as const
 
@@ -15,12 +15,7 @@ export const z_generate_image_openai = z.object({
       "OpenAI image model id. GPT image models: gpt-image-2, gpt-image-1.5, gpt-image-1, gpt-image-1-mini, chatgpt-image-latest. Also dall-e-2, dall-e-3."
     ),
   images: z.array(z_image_job).min(1).describe("List of images to generate (prompt + filename)"),
-  output_folder: z
-    .string()
-    .optional()
-    .describe(
-      "Optional folder relative to workspace root (or absolute). Defaults to .image-gen-mcp"
-    ),
+  absolute_output_directory: z_absolute_output_directory,
   size: z
     .string()
     .optional()

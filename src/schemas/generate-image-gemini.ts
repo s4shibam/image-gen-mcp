@@ -1,5 +1,5 @@
 import z from "zod"
-import { z_image_job } from "./index"
+import { z_absolute_output_directory, z_image_job } from "./index"
 
 const GEMINI_ASPECT_RATIOS = [
   "1:1",
@@ -30,12 +30,7 @@ export const z_generate_image_gemini = z.object({
       "Gemini image model id, e.g. gemini-3.1-flash-image, gemini-3-pro-image, gemini-2.5-flash-image, nano-banana-pro-preview."
     ),
   images: z.array(z_image_job).min(1).describe("List of images to generate (prompt + filename)"),
-  output_folder: z
-    .string()
-    .optional()
-    .describe(
-      "Optional folder relative to workspace root (or absolute). Defaults to .image-gen-mcp"
-    ),
+  absolute_output_directory: z_absolute_output_directory,
   aspect_ratio: z
     .enum(GEMINI_ASPECT_RATIOS)
     .optional()

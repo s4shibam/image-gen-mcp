@@ -1,10 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises"
 import path from "node:path"
 import type { TProvider } from "@/types/common"
-import { DEFAULT_OUTPUT_DIR } from "@/utils/constants"
-
-export const resolve_output_dir = (output_folder?: string): string =>
-  path.resolve(process.cwd(), output_folder?.trim() || DEFAULT_OUTPUT_DIR)
 
 export const sanitize_segment = (value: string): string =>
   value

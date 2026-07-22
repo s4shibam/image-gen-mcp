@@ -26,7 +26,7 @@ Image Gen MCP is a STDIO MCP server for generating images with OpenAI and Google
 - 🧠 **Two AI providers** - Generate images with OpenAI or Google Gemini
 - 🖼️ **Batch generation** - Create several images in one request, with up to 10 jobs running at once
 - 🎨 **Image controls** - Set size, quality, aspect ratio, format, and background when supported by the model
-- 💾 **Direct file output** - Save generated images into the current workspace or a custom folder
+- 💾 **Explicit file output** - Save generated images to a required absolute directory
 - 🏷️ **Clear filenames** - Files include the requested name, provider, model, and timestamp
 - 📋 **Useful results** - Get a summary of saved files and any jobs that failed
 
@@ -76,21 +76,21 @@ GEMINI_API_KEY=your-gemini-api-key
 After connecting the server, ask your MCP client to create an image. For example:
 
 ```text
-Use Gemini model gemini-3.1-flash-image to create a 16:9 hero image for a coffee shop website. Save it as coffee-shop-hero.
+Use Gemini model gemini-3.1-flash-image to create a 16:9 hero image for a coffee shop website. Save it as coffee-shop-hero in /Users/you/projects/coffee-shop/assets/images.
 ```
 
 ```text
-Use OpenAI model gpt-image-2 to create three square product icons and save them in assets/images.
+Use OpenAI model gpt-image-2 to create three square product icons and save them in /Users/you/projects/store/assets/images.
 ```
 
-The generated files are saved in `.image-gen-mcp` by default. If you provide `output_folder`, they are saved there instead.
+Every tool call must include `absolute_output_directory`. Relative paths are rejected, so the MCP server never depends on its process working directory.
 
 ## Tools
 
 | Tool | Description | Main options |
 | --- | --- | --- |
-| `generate_image_openai` | Generate one or more images with the OpenAI Image API | `model`, `images`, `output_folder`, `size`, `quality`, `output_format`, `background` |
-| `generate_image_gemini` | Generate one or more images with the Gemini Interactions API | `model`, `images`, `output_folder`, `aspect_ratio`, `image_size`, `mime_type` |
+| `generate_image_openai` | Generate one or more images with the OpenAI Image API | `model`, `images`, `absolute_output_directory`, `size`, `quality`, `output_format`, `background` |
+| `generate_image_gemini` | Generate one or more images with the Gemini Interactions API | `model`, `images`, `absolute_output_directory`, `aspect_ratio`, `image_size`, `mime_type` |
 
 Each item in `images` needs:
 
@@ -101,7 +101,11 @@ Each item in `images` needs:
 
 ### Output files
 
-The default output folder is `.image-gen-mcp` in the server's current working directory. Relative and absolute custom paths are supported.
+`absolute_output_directory` is required and must be an absolute directory path. The directory is created when it does not exist. For example:
+
+```text
+/Users/you/projects/coffee-shop/assets/images
+```
 
 Files use this format:
 

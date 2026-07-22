@@ -4,12 +4,12 @@ import type { TGenerateImageOpenAIInput } from "@/schemas/generate-image-openai"
 import type { TJobResult } from "@/types/common"
 import { CONCURRENCY } from "@/utils/constants"
 import { format_summary, tool_error, tool_ok } from "@/utils/result"
-import { build_image_filename, ensure_dir, resolve_output_dir, save_image } from "@/utils/storage"
+import { build_image_filename, ensure_dir, save_image } from "@/utils/storage"
 
 export const handle_generate_image_openai = async (input: TGenerateImageOpenAIInput) => {
   try {
     const client = create_openai_client()
-    const out_dir = resolve_output_dir(input.output_folder)
+    const out_dir = input.absolute_output_directory
     await ensure_dir(out_dir)
 
     const limit = p_limit(CONCURRENCY)
