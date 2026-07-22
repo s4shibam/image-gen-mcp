@@ -1,0 +1,17 @@
+# Node dependencies
+node_modules
+
+# Build output
+.dist
+
+# Environment files
+.env
+
+# Local files
+*.local.*
+
+# Image generation output
+.image-gen-mcp
+
+# Cursor config files
+.cursor/mcp.json
