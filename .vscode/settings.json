@@ -6,5 +6,5 @@
     "source.organizeImports.biome": "explicit",
     "source.removeUnusedImports.biome": "explicit"
   },
-  "cSpell.words": ["dall", "genai", "modelcontextprotocol"]
+  "cSpell.words": ["dall", "genai", "modelcontextprotocol", "tsup"]
 }
