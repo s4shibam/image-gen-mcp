@@ -1,5 +1,5 @@
 {
-  "name": "image-gen-mcp",
+  "name": "@s4shibam/image-gen-mcp",
   "version": "0.0.1",
   "description": "STDIO MCP server for OpenAI and Gemini image generation",
   "type": "module",
@@ -35,6 +35,9 @@
     "url": "https://github.com/s4shibam/image-gen-mcp/issues"
   },
   "homepage": "https://github.com/s4shibam/image-gen-mcp#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=20"
   },
