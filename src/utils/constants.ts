@@ -1,5 +1,5 @@
 export const SERVER_NAME = "image-gen-mcp"
-export const SERVER_VERSION = "0.0.1"
+export const SERVER_VERSION = "0.0.2"
 
 export const DEFAULT_OUTPUT_DIR = ".image-gen-mcp"
 

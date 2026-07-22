@@ -1,6 +1,6 @@
 {
   "name": "@s4shibam/image-gen-mcp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "STDIO MCP server for OpenAI and Gemini image generation",
   "type": "module",
   "bin": {
