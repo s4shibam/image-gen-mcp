@@ -1,0 +1,26 @@
+# Node dependencies
+node_modules
+package-lock.json
+
+# Environment files
+.env
+
+# Local files
+*.local.*
+
+# Image generation output
+.image-gen-mcp
+
+# Cursor config files
+.cursor
+.vscode
+
+# Source & tooling
+src
+tsconfig.json
+tsup.config.ts
+biome.json
+
+# Git & GitHub
+.git
+.github
