@@ -1,5 +1,5 @@
 export const SERVER_NAME = "image-gen-mcp"
-export const SERVER_VERSION = "0.0.3"
+export const SERVER_VERSION = "0.0.4"
 
 export const CONCURRENCY = 10
 
